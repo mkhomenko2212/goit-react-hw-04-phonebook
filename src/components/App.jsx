@@ -76,8 +76,9 @@ export class App extends Component {
       </Section>
         <Section title='Contact List'>
           <Filter filter={filter} onChangeFilter={this.handleFilterChange} />
-            <ContactList
-            contacts={filteredContacts}
+          <ContactList
+            contacts={contacts}
+            filteredContacts={filteredContacts}
             onDeleteContact={this.onDeleteContact}
           /></Section>
       </>
