@@ -1,15 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { nanoid } from 'nanoid';
 import { Form, Formik, Field } from 'formik';
 import { Component } from "react";
-import * as yup from 'yup';
+import * as Yup from 'yup';
 import { FormLabel, FormButton } from './ContactForm.styled';
 
-const initialValues = {
-   name: '',
-    number: '',
-};
+
+const validationSchema = Yup.object({
+  name: Yup.string().required(),
+  number: Yup.number().min(8).max(12).required(),
+});
+
 
 export class ContactForm extends Component  {
     state = {
@@ -31,6 +31,7 @@ export class ContactForm extends Component  {
                 number: '',
                 }}
                 onSubmit={handleSubmit}
+                validationSchema={validationSchema}
                
             >
       <Form autoComplete="off" >

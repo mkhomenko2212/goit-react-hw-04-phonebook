@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FilterLabel } from './Filter.styled';
 
 export const Filter = ({ filter, onChangeFilter }) => {
     return (

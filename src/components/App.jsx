@@ -1,11 +1,13 @@
 
 
 import React, { Component } from "react";
-import { ContactForm } from "./ContactForm/ContactForm";
+import { nanoid } from 'nanoid'
 import Section from "./Section/Section";
 import ContactList from "./ContactList/ContactList";
-import { nanoid } from 'nanoid'
 import { Filter } from "./Filter/Filter";
+import { ContactForm } from "./ContactForm/ContactForm";
+
+
 
 export class App extends Component {
   state = {
