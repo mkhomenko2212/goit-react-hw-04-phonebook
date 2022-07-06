@@ -18,28 +18,19 @@ export class App extends Component {
     {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
   ],
   filter: '',
-  name: '',
-  number: ''
-  }
 
-  handleFilterChange = filter => {
-    this.setState({ filter });
-  }; 
-  onChangeFilter = e => {
-    this.setState({ filter: e.currentTarget.value });
   }
 
   addContactHandler = ({ name, number }) => {
-    const existingContact = this.state.contacts.find(contact => contact.name === name);
-    if (existingContact) {
-      alert('This contact is already in contacts');
+    const onListName = this.state.contacts.find(contact => contact.name === name);
+    if (onListName) {
+      alert('This contact is already added');
       return;
     }
     this.setState(({ contacts }) => {
       return {
         contacts: [
-          {
-            id: nanoid(),
+          {id: nanoid(),
             name,
             number,
           },
@@ -49,7 +40,12 @@ export class App extends Component {
     });
   }
 
-    filteredContacts = () => {
+
+  onChangeFilter = e => {
+    this.setState({ filter: e.currentTarget.value });
+  }
+
+  filteredContacts = () => {
     const { contacts, filter } = this.state;
     const lowFilter = filter.toLowerCase();
 
@@ -67,18 +63,18 @@ export class App extends Component {
   }
 
   render() {
-    const { contacts } = this.state;
     const { filter } = this.state;
     const filteredContacts = this.filteredContacts();
+
     return (
-      <><Section title='Phonebook'>
+      <>
+        <Section title='Phonebook'>
         <ContactForm onAddContact={this.addContactHandler} />
       </Section>
         <Section title='Contact List'>
-          <Filter filter={filter} onChangeFilter={this.handleFilterChange} />
+          <Filter filter={filter} onChangeFilter={this.onChangeFilter} />
           <ContactList
-            contacts={contacts}
-            filteredContacts={filteredContacts}
+            contacts={filteredContacts}
             onDeleteContact={this.onDeleteContact}
           /></Section>
       </>

@@ -1,21 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const Filter = ({ filter, onChangeFilter }) => {
+export const Filter = ({ value, onChangeFilter }) => {
     return (
-        <div>
+        
         <label> 
             <span >
                 Find contacts by name
                 </span>
-            </label>
+           
             <input
-                value={filter}
+                type="text"
+                id="filter"
+                value={value}
                 onChange={onChangeFilter}
             />
            
-        </div>
-    );
+        
+  </label>  ); 
 }
 
 Filter.propTypes = {
