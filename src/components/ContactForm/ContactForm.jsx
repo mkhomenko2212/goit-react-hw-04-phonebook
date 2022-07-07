@@ -1,14 +1,11 @@
 import React from 'react';
-import { Form, Formik, Field } from 'formik';
+import PropTypes from 'prop-types';
 import { Component } from "react";
-import * as Yup from 'yup';
-import { FormLabel, FormButton } from './ContactForm.styled';
+
+import { FormLabel, FormButton, Input, Form } from './ContactForm.styled';
 
 
-const validationSchema = Yup.object({
-  name: Yup.string().required(),
-  number: Yup.number().min(8).max(12).required(),
-});
+
 
 
 export class ContactForm extends Component  {
@@ -40,17 +37,17 @@ handleSubmit =  e => {
   
         return (
            
-                <Formik
-                initialValues={{
-                name: '',
-                number: '',
-                }}
-                validationSchema={validationSchema}
+            //     <Formik
+            //     initialValues={{
+            //     name: '',
+            //     number: '',
+            //     }}
+                
                
-            >
+            // >
       <Form autoComplete="off" onSubmit={this.handleSubmit}>
         <FormLabel htmlFor="name">Name</FormLabel>
-                        <Field
+                        <Input
                         id="name"
                         name="name"
                         placeholder="Jane"
@@ -61,7 +58,7 @@ handleSubmit =  e => {
                         required />
 
         <FormLabel htmlFor="number">Number</FormLabel>
-                        <Field
+                        <Input
                         id="number"
                         name="number"
                 placeholder="number"
@@ -73,9 +70,13 @@ handleSubmit =  e => {
                         />
         <FormButton type="submit">Add Contact</FormButton>
       </Form>
-    </Formik>
+    // </Formik>
             )
     };
 };
 
 
+ContactForm.propTypes = {
+  name: PropTypes.string,
+  number: PropTypes.string,
+};
