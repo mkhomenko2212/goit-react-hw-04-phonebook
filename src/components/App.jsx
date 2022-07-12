@@ -21,6 +21,24 @@ export class App extends Component {
 
   }
 
+  componentDidMount() { 
+    const contacts = localStorage.getItem('contacts');
+    const parsedContacts = JSON.parse(contacts)
+    if (parsedContacts) {
+      this.setState({ contacts: parsedContacts })
+    }
+  };
+
+    componentDidUpdate(prevState) {
+    const {contacts} = this.state
+    const stringifyContacts = JSON.stringify(contacts)
+    
+    if (contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', stringifyContacts)
+    }
+  }
+  
+
   addContactHandler = ({ name, number }) => {
     const onListName = this.state.contacts.find(contact => contact.name === name);
     if (onListName) {

@@ -4,10 +4,6 @@ import { Component } from "react";
 
 import { FormLabel, FormButton, Input, Form } from './ContactForm.styled';
 
-
-
-
-
 export class ContactForm extends Component  {
     state = {
         name: '',
@@ -31,7 +27,6 @@ handleSubmit =  e => {
       number: '',
     });
   };
-
 
     render() {
   
